@@ -17,7 +17,6 @@ class SearchHandler():
 class Contracts(models.Model):
 
     id = models.IntegerField(blank=True, primary_key=True)
-    product_id = models.IntegerField(blank=True, null=True)
     product_name = models.TextField(blank=True, null=True)
     price = models.FloatField(blank=True, null=True)
     product_vat_rate = models.TextField(blank=True, null=True)

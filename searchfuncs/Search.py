@@ -26,7 +26,7 @@ def init():
 
     patterns = "[!#$%&'()*+,./:;<=>?@[\]^_`{|}~—\"\-]+"
 
-    doc = open('searchfuncs/norm_data_new.txt', encoding = 'utf-8')
+    doc = open('searchfuncs/norm_data_new_short.txt', encoding = 'utf-8')
     buff = []
     for sentence in doc.read().split('\n'):
         buff.append(sentence)
@@ -79,9 +79,9 @@ def search(dictionary, index, tfidf, searchWord):
 
     back = []
 
-    for i in range(0,10,1):
+    for i in range(0,5,1):
         if total[i][1] > 0:
-            back.append(total[i][0]+1)
+            back.append(total[i][0])
 
     return back
 
