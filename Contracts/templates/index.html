@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <title>Название сайта</title>
+{% load static %}
 </head>
 <body>
 <table
@@ -109,6 +110,7 @@ align="center">
 <!--ПОДВАЛ-->
 
 <!--Создаём таблицу подвала-->
+<h3>Результаты поиска( Вывод БД )</h3>
 <table
 border="1"
 bgcolor="#4285B4"
@@ -116,14 +118,16 @@ height="300"
 cellpadding="10"
 style="width:100%; border-radius:5px;">
 <!--Создаём строку.-->
+
+{% for contract in contracts %}
 <tr>
-<!--Создаём столбец-->
-<th>
-<h3>Результаты поиска( Вывод БД )</h3>
-<!--Закрываем таблицу подвала. При желании в подвале можно
-сделать несколько строк и столбцов-->
-</th>
+    <th>{{ contract.id }}</th>
+    <th>{{ contract.product_name }}</th>
+    <th>{{ contract.price }}</th>
+    <th>{{ contract.country_name }}</th>
 </tr>
+{% endfor %}
+
 </table>
 <!--Закрываем таблицу контейнера-->
 </td>
