@@ -21,6 +21,9 @@ nltk.download('averaged_perceptron_tagger_ru')
 nltk.download('stopwords')
 '''
 
+def search(searchWord):
+    pass
+
 morph = MorphAnalyzer()
 
 patterns = "[!#$%&'()*+,./:;<=>?@[\]^_`{|}~—\"\-]+"
