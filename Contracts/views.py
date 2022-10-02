@@ -11,11 +11,11 @@ import json
 def index(responce):
     if responce.method == 'POST' and responce.POST.get('SearchLine') != '':
         # passval = SearchHandler.search(responce.POST.get('SearchLine'))
-        ids = [id for id in SearchHandler.search(responce.POST.get('SearchLine'))]
-        ids = []
-        contracts = []
-        for id in ids: contracts.append(Contracts.objects.raw(f'SELECT * FROM Contracts WHERE id = {id}'))
+        ids = SearchHandler.search(responce.POST.get('SearchLine'))
+        contracts = Contracts.objects.filter(id__in=ids)
+        for contract in contracts: print(contract.product_name)
         # contracts = Contracts.objects.raw('SELECT id, product_name, price, country_name FROM Contracts LIMIT 5')
+        print(type(contracts))
         return render(responce, 'index.html', {'contracts': contracts})
     return render(responce, 'index.html')
 

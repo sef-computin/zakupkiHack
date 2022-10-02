@@ -6,7 +6,6 @@ from searchfuncs import Search
 class SearchHandler():
     dictionary, index, tfidf = Search.init()
     print('[DEBUG] init static class')
-
     @classmethod
     def search(self, searchWord):
         ids = []

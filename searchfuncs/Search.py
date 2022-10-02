@@ -26,7 +26,7 @@ def init():
 
     patterns = "[!#$%&'()*+,./:;<=>?@[\]^_`{|}~—\"\-]+"
 
-    doc = open('searchfuncs/Контракты 44ФЗ финал.txt', encoding = 'utf-8')
+    doc = open('searchfuncs/norm_data_new.txt', encoding = 'utf-8')
     buff = []
     for sentence in doc.read().split('\n'):
         buff.append(sentence)
