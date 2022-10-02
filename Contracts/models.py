@@ -4,12 +4,15 @@ from searchfuncs import Search
 # Create your models here.
 
 class SearchHandler():
-    # Search.init()
+    dictionary, index, tfidf = Search.init()
     print('[DEBUG] init static class')
 
     @classmethod
     def search(self, searchWord):
-        print('[DEBUG] search')
+        ids = []
+        ids = Search.search(self.dictionary, self.index, self.tfidf, searchWord)
+        print('[DEBUG] search successful')
+        return ids
         # Search.search(searchWord)
 
 class Contracts(models.Model):
