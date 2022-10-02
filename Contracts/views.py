@@ -7,12 +7,13 @@ import json
 # Create your views here.
 
 def index(responce):
-    contracts = Contracts.objects.all()[:5]
-    for contract in contracts: print(contract.product_name)
-    # return render(responce, 'index.html')
-    return render(responce, 'index.html', {'contracts': contracts})
+    if responce.method == 'POST' and responce.POST.get('SearchLine') != '':
+        print(responce.POST.get('SearchLine'))
+        contracts = Contracts.objects.raw('SELECT id, product_name, price, country_name FROM Contracts LIMIT 5')
+        return render(responce, 'index.html', {'contracts': contracts})
+    return render(responce, 'index.html')
+    #return render(responce, 'index.html', {'contracts': contracts})
 
-# Create your views here.
 def table(request):
     df = pd.read_csv("~/Проекты/rosseltorg/big_data/norm_data.csv")
     # parsing the DataFrame in json format.
@@ -22,3 +23,7 @@ def table(request):
     context = {'d': data}
   
     return render(request, 'table.html', context)
+
+# def search(responce):
+#     contracts = Contracts.objects.raw('SELECT id, product_name, price, country_name FROM Contracts LIMIT 5')
+#     return render(responce, 'index.html', {'contracts': contracts})

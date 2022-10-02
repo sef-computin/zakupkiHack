@@ -55,9 +55,11 @@ style="width:50% ; height:20% ">
 <p style="text-indent:20px">
 </p>
 
-<form method="POST" action="/search">
+
+<form method="POST" action="">
+
     {% csrf_token %}
-    <input type="text" name="textfield">
+    <input type="text" name="SearchLine">
     
     <button type="submit">Поиск</button>
     </form>
@@ -77,7 +79,7 @@ style="width:50% ; height:20% ">
 <a href="">
 <!--Картинка маркера перед названием страницы--
 <img src="http://trueimages.ru/img/00/06/f4fffdb5.png">
-<!--Название страницы
+Название страницы
 style="margin-left:5px;" - отступ названия от маркера-->
 <span style="margin-left:5px;">Выбор по стране</span></a>
 <!--Закрываем абзац-->
