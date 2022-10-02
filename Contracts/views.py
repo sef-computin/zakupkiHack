@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Contracts
-from searchfuncs import Search
+from .models import SearchHandler
 
 import pandas as pd
 import json
@@ -9,7 +9,8 @@ import json
 
 def index(responce):
     if responce.method == 'POST' and responce.POST.get('SearchLine') != '':
-        # ids = [id - 1 for id in search(responce.POST.get('SearchLine'))]
+        passval = SearchHandler.search(responce.POST.get('SearchLine'))
+        # ids = [id - 1 for id in searchHandler.search(responce.POST.get('SearchLine'))]
         ids = []
         contracts = []
         for id in ids: contracts.append(Contracts.objects.raw(f'SELECT * FROM Contracts WHERE id = {id}'))

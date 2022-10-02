@@ -1,6 +1,17 @@
 from django.db import models
+from searchfuncs import Search
 
 # Create your models here.
+
+class SearchHandler():
+    # Search.init()
+    print('[DEBUG] init static class')
+
+    @classmethod
+    def search(self, searchWord):
+        print('[DEBUG] search')
+        # Search.search(searchWord)
+
 class Contracts(models.Model):
 
     id = models.IntegerField(blank=True, primary_key=True)
