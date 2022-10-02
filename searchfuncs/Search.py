@@ -47,6 +47,16 @@ def init():
     texts = [[word for word in document.lower().split() if word not in stopwords_ru]
             for document in text_corpus]
 
+    # texti = []
+    # interval = []
+    # for document in texts:
+    #     for text in document:
+    #         p = morph.parse(text)[0]
+    #         interval.append(p.normal_form)
+    #     texti.append(interval)
+    #     interval = []
+    
+
     frequency = defaultdict(int)
     for text in texts:
         for token in text:
@@ -80,7 +90,7 @@ def search(dictionary, index, tfidf, searchWord):
     back = []
 
     for i in range(0,5,1):
-        if total[i][1] > 0:
+        if total[i][1] > 0.3:
             back.append(total[i][0])
 
     return back
