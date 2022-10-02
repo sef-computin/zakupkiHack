@@ -9,7 +9,8 @@ import json
 
 def index(responce):
     if responce.method == 'POST' and responce.POST.get('SearchLine') != '':
-        ids = [id - 1 for id in search(responce.POST.get('SearchLine'))]
+        # ids = [id - 1 for id in search(responce.POST.get('SearchLine'))]
+        ids = []
         contracts = []
         for id in ids: contracts.append(Contracts.objects.raw(f'SELECT * FROM Contracts WHERE id = {id}'))
         contracts = Contracts.objects.raw('SELECT id, product_name, price, country_name FROM Contracts LIMIT 5')
@@ -25,7 +26,3 @@ def table(request):
     context = {'d': data}
   
     return render(request, 'table.html', context)
-
-# def search(responce):
-#     contracts = Contracts.objects.raw('SELECT id, product_name, price, country_name FROM Contracts LIMIT 5')
-#     return render(responce, 'index.html', {'contracts': contracts})
